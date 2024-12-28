@@ -1,0 +1,26 @@
+# SQLiteデータベースを作成し、汎用的なトレーシングデータ用のテーブルを作成するコマンド
+sqlite3 /Users/kubota/開発/TracingService/server/DB/tracing.db "
+CREATE TABLE IF NOT EXISTS tracing_data (
+    id INTEGER NOT NULL PRIMARY KEY,          -- 一意の識別子
+    trace_id TEXT NOT NULL,                   -- トレースID
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, -- タイムスタンプ（デフォルトは現在の日時）
+    data TEXT,                                -- トレースデータ
+    source TEXT,                              -- データの送信元
+    destination TEXT,                         -- データの送信先
+    arguments JSON,                           -- JSON形式の引数
+    status TEXT,                              -- ステータス
+    error_message TEXT,                       -- エラーメッセージ
+    duration INTEGER                          -- 処理時間（ミリ秒）
+);"
+
+# カラムについて
+# id: 一意の識別子
+# trace_id: トレースID
+# timestamp: タイムスタンプ（デフォルトは現在の日時）
+# data: トレースデータ
+# source: データの送信元
+# destination: データの送信先
+# arguments: JSON形式の引数
+# status: ステータス
+# error_message: エラーメッセージ
+# duration: 処理時間（ミリ秒）
