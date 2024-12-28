@@ -1,0 +1,4 @@
+# SQLiteデータベースのトレーシングデータ用テーブルを初期化するコマンド
+sqlite3 /Users/kubota/開発/TracingService/server/DB/tracing.db "
+DELETE FROM tracing_data;
+"
